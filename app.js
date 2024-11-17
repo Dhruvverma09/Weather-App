@@ -9,9 +9,8 @@ const description = document.getElementById('description');
 const humidity = document.getElementById('humidity');
 const wind = document.getElementById('wind');
 
-const apiKey = '07c41fa09a6c2e871b3335bfc5279f82'; // Get your free API key from OpenWeatherMap or other weather API
+const apiKey = '07c41fa09a6c2e871b3335bfc5279f82';
 
-// Function to fetch weather data from the API
 async function getWeather(city) {
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=07c41fa09a6c2e871b3335bfc5279f82&units=metric`;
 
@@ -23,7 +22,6 @@ async function getWeather(city) {
       throw new Error(data.message); // Show error message if city is not found
     }
 
-    // Display the weather details
     cityName.textContent = `${data.name}, ${data.sys.country}`;
     temperature.textContent = `Temperature: ${data.main.temp}°C`;
     description.textContent = `Weather: ${data.weather[0].description}`;
@@ -39,7 +37,6 @@ async function getWeather(city) {
   }
 }
 
-// Event listener for the "Get Weather" button
 searchBtn.addEventListener('click', () => {
   const city = cityInput.value.trim();
   if (city) {
@@ -47,7 +44,6 @@ searchBtn.addEventListener('click', () => {
   }
 });
 
-// Optional: Add ability to press Enter to search
 cityInput.addEventListener('keypress', (e) => {
   if (e.key === 'Enter') {
     searchBtn.click();
